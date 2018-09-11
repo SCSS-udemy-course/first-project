@@ -4,6 +4,7 @@
 
 @include google-font("Alegreya+Sans");
 @include google-font("Titillium+Web");
+
 @include fancy-links;
 
 body {
@@ -14,6 +15,16 @@ body {
   @include large-screens {
     font-size: 125%;
   }
+}
+
+.error {
+  color: red;
+}
+
+.critical-error {
+  @extend .error;
+  border-bottom: 1px solid red;
+  font-weight: bold;
 }
 
 h1, h2, h3, h4 {
@@ -31,14 +42,35 @@ p {
 a {
   color: $link-color;
 
-  &:hover{
+  &:hover {
     color: darken($link-color, 15%);
   }
+}
+
+%highlight {
+  font-style: italic;
+}
+
+.sub-title {
+  @extend %highlight;
+  font-size: em(20px);
 }
 
 .warning-button {
   @include warning;
   padding: 8px 12px;
+}
+
+.cta-button {
+  @extend .warning-button;
+  @extend .error;
+  @include rounded();
+  font-weight: bold;
+}
+
+.super-cta-button {
+  @extend .cta-button;
+  font-size: em(20px);
 }
 
 #header {
